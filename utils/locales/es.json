@@ -1,0 +1,52 @@
+{
+    "messages": {
+        "cooldown": "⏳ Espera `{duration}` para usar este comando otra vez",
+        "botperms": "⛔ Necesito `{perms}` para ejecutar este comando",
+        "userperms": "🚷 Necessitas `{perms}` para usar este comando"
+    },
+    "prefix": {
+        "args": "Agrega un prefijo",
+        "argslength": "El prefijo no debe exceder los 5 caracteres",
+        "changed": "Prefijo cambiado a ",
+        "error": "Se produjo un error"
+    },
+    "lang": {
+        "args": "Agrega un idioma válido",
+        "changed": "Idioma cambiado a ",
+        "error": "Idioma no válido"
+    },
+    "test": {
+        "test": "prueba"
+    },
+    "randomcat": {
+        "origin": "Imagen tomada de ",
+        "error": "Se produjo un error > {error}"
+    },
+    "randomdog": {
+        "origin": "Imagen tomada de ",
+        "error": "Se produjo un error > {error}"
+    },
+    "help": {
+        "title": "MiCama",
+        "description": "Un bot para todas las comunidades",
+        "categories": {
+            "entertainment": ":joystick:ㅤEntretenimiento",
+            "settings": ":gear:ㅤConfiguración",
+            "information": ":information_source:ㅤInformación"
+        }
+    },
+    "spacex": {
+        "description": "No hay una descripción disponible",
+        "author": "El último lanzamiento de SpaceX",
+        "links": "**Enlaces disponibles**",
+        "date": "**Día del lanzamiento**",
+        "success": "**¿Ha sido un éxito?**"
+    },
+    "country": {
+        "description": "Consigue información sobre cualquier país",
+        "language": "Idiomas",
+        "capital": "Capital",
+        "population": "Población",
+        "currencies": "Moneda/s"
+    }
+}

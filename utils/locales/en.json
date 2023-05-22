@@ -1,0 +1,52 @@
+{
+    "messages": {
+        "cooldown": "⏳ Wait `{duration}` to use this command again",
+        "botperms": "⛔ I need `{perms}` permissions to run this command",
+        "userperms": "🚷 You need `{perms}` permissions to use this command"
+    },
+    "prefix": {
+        "args": "Add a prefix",
+        "argslength": "The prefix must not exceed 5 characters",
+        "changed": "Prefix changed to ",
+        "error": "An error occurred"
+    },
+    "lang": {
+        "args": "Add a valid language",
+        "changed": "Language changed to ",
+        "error": "Invalid language"
+    },
+    "test": {
+        "test": "test"
+    },
+    "randomcat": {
+        "origin": "Image taken from ",
+        "error": "An error occurred > {error}"
+    },
+    "randomdog": {
+        "origin": "Image taken from ",
+        "error": "An error occurred > {error}"
+    },
+    "help": {
+        "title": "MiCama",
+        "description": "A bot for all communities",
+        "categories": {
+            "entertainment": ":joystick:ㅤEntertainment",
+            "settings": ":gear:ㅤSettings",
+            "information": ":information_source:ㅤInformation"
+        }
+    },
+    "spacex": {
+        "description": "No description available",
+        "author": "The latest SpaceX launch",
+        "links": "**Available links**",
+        "date": "**Launch date**",
+        "success": "**Was it successful?**"
+    },
+    "country": {
+        "description": "Get information about any country",
+        "language": "Languages",
+        "capital": "Capital",
+        "population": "Population",
+        "currencies": "Currency/Currencies"
+    }
+}
