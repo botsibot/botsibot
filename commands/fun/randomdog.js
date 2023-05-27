@@ -1,4 +1,4 @@
-const { Client, Message, EmbedBuilder, Permissions, AttachmentBuilder } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const axios = require('axios');
 
 const subreddits = ['PuppySmiles','WhatsWrongWithYourDog','blop','dogswithjobs','corgi'];
@@ -8,6 +8,8 @@ module.exports = {
     name: 'randomdog',
     description: "Get a random image of a dog",
     cooldown: 3500,
+    syntax: "randomdog",
+    category: "fun",
     userPerms: [],
     botPerms: [],
     run: async (client, message, args) => {

@@ -1,17 +1,20 @@
-const { Client, Message, EmbedBuilder, Permissions, AttachmentBuilder } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const axios = require('axios');
 
 const subreddits = ['CatsStandingUp','CatLoaf','cats','tuckedinkitties','Catsubs'];
 var subreddit = subreddits[Math.floor(Math.random() * subreddits.length)];
+const translate = require(`${process.cwd()}/utils/functions/translate`)
 
 module.exports = {
     name: 'randomcat',
     description: "Get a random image of a cat",
     cooldown: 3500,
+    syntax: "randomcat",
+    category: "fun",
     userPerms: [],
     botPerms: [],
     run: async (client, message, args) => {
-        const lang = message.member.guild.lang
+        const t = translate(message)
         const response = await axios.get(`https://www.reddit.com/r/${subreddit}/.json`)
         const posts = response.data.data.children;
 
@@ -22,12 +25,12 @@ module.exports = {
             const imageUrl = randomPost.data.url;
             const exampleEmbed = new EmbedBuilder()
                 .setColor(0x0099FF)
-                .setTitle(client.languages.__mf({ phrase: 'randomcat.origin', locale: lang })+`\`/r/${subreddit}/\``)
+                .setTitle(t('randomcat.origin')+`\`/r/${subreddit}/\``)
                 .setImage(`${imageUrl}`)
                 .setTimestamp()
             return message.channel.send({ embeds: [exampleEmbed] });
         } else {
-            return message.channel.send(client.languages.__mf({ phrase: 'randomcat.error', locale: lang }, { error: error }));
+            return message.channel.send(t('randomcat.error'), { error: error });
         }
 
     }

@@ -1,15 +1,18 @@
 const { Client, Message, EmbedBuilder, Permissions, AttachmentBuilder } = require('discord.js');
 const serverSchema = require(`${process.cwd()}/utils/models/guild.js`)
+const translate = require(`${process.cwd()}/utils/functions/translate`)
 
 module.exports = {
     name: 'lang',
     description: "Sets the bot lang",
     cooldown: 3000,
+    syntax: "lang <language>",
+    category: "config",
     aliases: ["setlang"],
     userPerms: [],
     botPerms: [],
     run: async (client, message, args) => {
-
+        const t = translate(message)
         const lang = args[0]
 
 
@@ -31,12 +34,12 @@ module.exports = {
                     });
                     data = await serverSchema.findOne({ guildId: message.guild.id });
                 }
-                return message.channel.send(client.languages.__mf({ phrase: 'lang.changed', locale: lang }) + lang)
+                return message.channel.send(t('lang.changed') + lang)
             } catch (error) {
                 console.log(error)
             }
         } else {
-            return message.channel.send(client.languages.__mf({ phrase: 'lang.error', locale: lang }));
+            return message.channel.send(t('lang.error'));
         }
 
     }

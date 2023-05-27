@@ -1,15 +1,17 @@
 const { Client, Message, EmbedBuilder, Permissions, AttachmentBuilder } = require('discord.js');
 const axios = require('axios');
-
+const translate = require(`${process.cwd()}/utils/functions/translate`)
 module.exports = {
     name: 'countries',
     description: "Get info about any country of the world",
     cooldown: 3000,
+    syntax: "countries <countrie>",
+    category: "useful",
     aliases: ["country"],
     userPerms: [],
     botPerms: [],
     run: async (client, message, args) => {
-        const lang = message.member.guild.lang
+        const t = translate(message)
         const countryName = args[0];
         const url = `https://restcountries.com/v3.1/name/${countryName}`;
 
@@ -20,12 +22,12 @@ module.exports = {
                 const Embed = {
                     color: 0x0099FF,
                     title: `**__${country.name.common}__**`,
-                    description: client.languages.__mf({ phrase: 'country.description', locale: lang }),
+                    description: t('country.description'),
                     fields: [
-                        { name: client.languages.__mf({ phrase: 'country.language', locale: lang }), value: Object.values(country.languages).join(', '), inline: true },
-                        { name: client.languages.__mf({ phrase: 'country.capital', locale: lang }), value: country.capital[0], inline: true },
-                        { name: client.languages.__mf({ phrase: 'country.population', locale: lang }), value: country.population, inline: true },
-                        { name: client.languages.__mf({ phrase: 'country.currencies', locale: lang }), value: `${country.currencies.CAD.name} (${country.currencies.CAD.symbol})`,inline: true },
+                        { name: t('country.language'), value: Object.values(country.languages).join(', '), inline: true },
+                        { name: t('country.capital'), value: country.capital[0], inline: true },
+                        { name: t('country.population'), value: country.population, inline: true },
+                        { name: t('country.currencies'), value: `${country.currencies.CAD.name} (${country.currencies.CAD.symbol})`,inline: true },
                     ],
                     image: { url: 'https://www.autocollants-stickers.com/resize/360x360/zc/3/f/0/src/sites/astickers/files/products/d318.png' },
                     timestamp: new Date(),

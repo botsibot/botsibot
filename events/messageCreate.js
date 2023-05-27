@@ -6,13 +6,12 @@ const cooldown = new Collection();
 const serverSchema = require(`${process.cwd()}/utils/models/guild.js`);
 
 client.on('messageCreate', async message => {
-    const lang = message.member.guild.lang;
-    const server = message.member.guild;
+    const lang = message;
     let data = await serverSchema.findOne({
         guildId: message.guild.id,
     });
     if (data) {
-        server.lang = data.language;
+        lang.locale = data.language;
     } else {
         const newGuild = new serverSchema({
             guildId: message.guild.id,

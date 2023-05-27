@@ -1,6 +1,6 @@
 const { Client, Message, EmbedBuilder, Permissions, AttachmentBuilder } = require('discord.js');
 const axios = require('axios');
-
+const translate = require(`${process.cwd()}/utils/functions/translate`)
 module.exports = {
     name: 'spacex',
     description: "Get info about the latest rocket of spacex",
@@ -8,8 +8,7 @@ module.exports = {
     userPerms: [],
     botPerms: [],
     run: async (client, message, args) => {
-        const lang = message.member.guild.lang
-
+        const t = translate(message)
         const url = "https://api.spacexdata.com/v4/launches/latest";
 
         axios.get(url)
@@ -27,13 +26,13 @@ module.exports = {
 
                 const Embed = {
                     color: 0x000000,
-                    title: `ㅤㅤㅤㅤㅤㅤㅤㅤ**__${launch.name}__**`,
-                    author: { name: client.languages.__mf({ phrase: 'spacex.author', locale: lang }) },
-                    description: launch.details || client.languages.__mf({ phrase: 'spacex.description', locale: lang }),
+                    title: `**__${launch.name}__**`,
+                    author: { name: t('spacex.author')},
+                    description: launch.details || t('spacex.description'),
                     fields: [
-                        { name: `ㅤ${client.languages.__mf({ phrase: 'spacex.links', locale: lang })}ㅤ`, value: `ㅤ${links}ㅤ`, inline: true },
-                        { name: `ㅤ${client.languages.__mf({ phrase: 'spacex.date', locale: lang })}ㅤ`, value: `ㅤ${launch.date_utc.slice(0, 10)}ㅤ`, inline: true },
-                        { name: `ㅤ${client.languages.__mf({ phrase: 'spacex.success', locale: lang })}ㅤ`, value: `ㅤ${launch.success ? "✅" : "❌"}ㅤ`, inline: true }
+                        { name: `${t('spacex.links')}`, value: `${links}`, inline: true },
+                        { name: `${t('spacex.date')}`, value: `${launch.date_utc.slice(0, 10)}`, inline: true },
+                        { name: `${t('spacex.success')}`, value: `${launch.success ? "✅" : "❌"}`, inline: true }
                     ],
                     image: { url: launch.links.patch.large },
                     timestamp: new Date()
